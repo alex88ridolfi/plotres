@@ -628,6 +628,7 @@ c --- plot ---
       real xp(99999),yp(99999),eyp(99999)
       real xc,yc,d,d0,toa,res,xx,yy,x,y
       real xmin,xmax,ymin,ymax,xepoch,ctroph
+      real :: x1(1), y1(1)
       integer i,ii,ntoa,icurse,PGCURSE
       character key*1
 
@@ -658,8 +659,10 @@ c --- plot ---
       if (d0.lt.0.02) then
          toa=xp(ii)
          res=yp(ii)
+         x1(1)= toa
+         y1(1)=res
          call PGSCI(4)
-         call PGPOINT(1,toa,res,5)
+         call PGPOINT(1, x1, y1, 5)
       else
          goto 100
       endif
